@@ -1,0 +1,103 @@
+_main:
+	pushl	%ebp
+	movl	%esp, %ebp
+	subl	$main.size, %esp
+assigning
+
+	movl	$100, %eax
+	movl	%eax, _x
+end assigning
+
+assigning
+
+	movl	$30, %eax
+	movl	%eax, _y
+end assigning
+
+assigning
+
+	movl	$2, %eax
+	movl	%eax, _z
+end assigning
+
+assigning
+
+negating
+	movl 	_x, %eax
+	negl 	%eax
+	movl 	%eax, R1
+ending negate
+	movl 	R1, %eax
+	movl	%eax, _a
+end assigning
+
+assigning
+
+adding
+negating
+	movl 	_x, %eax
+	negl 	%eax
+	movl 	%eax, R1
+ending negate
+	movl 	R1, %eax
+	addl 	_y, %eax
+	movl 	%eax, R2
+end adding
+	movl 	R2, %eax
+	movl	%eax, _b
+end assigning
+
+assigning
+
+addressing
+	leal 	_x, %eax
+	movl 	%eax, R1
+ending addressing
+	movl 	R1, %eax
+	movl	%eax, _p
+end assigning
+
+	movl	_a, %eax
+	movl	%eax, 4(%esp)
+addressing
+	leal 	, %eax
+	movl 	%eax, R1
+ending addressing
+	movl	, %eax
+	movl	%eax, 0(%esp)
+	call	_printf
+	movl	_b, %eax
+	movl	%eax, 4(%esp)
+addressing
+	leal 	, %eax
+	movl 	%eax, R1
+ending addressing
+	movl	, %eax
+	movl	%eax, 0(%esp)
+	call	_printf
+	movl	_c, %eax
+	movl	%eax, 4(%esp)
+addressing
+	leal 	, %eax
+	movl 	%eax, R1
+ending addressing
+	movl	, %eax
+	movl	%eax, 0(%esp)
+	call	_printf
+	movl	%ebp, %esp
+	popl	%ebp
+	ret
+
+	.globl	_main
+	.set	main.size, 8
+
+	.data
+	.comm	_x, 4, 4
+	.comm	_y, 4, 4
+	.comm	_z, 4, 4
+	.comm	_a, 4, 4
+	.comm	_b, 4, 4
+	.comm	_c, 4, 4
+	.comm	_d, 4, 4
+	.comm	_e, 4, 4
+	.comm	_p, 4, 4

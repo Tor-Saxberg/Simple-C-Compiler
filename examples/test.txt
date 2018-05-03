@@ -1,0 +1,14 @@
+starting
+in while
+b = 5
+in while
+b = 4
+in while
+b = 3
+in while
+b = 2
+in while
+b = 1
+in while
+b = 0
+**c = -1
